@@ -1,0 +1,91 @@
+@use "helpers/mixins";
+@use "helpers/reset";
+@use "helpers/variables";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+body {
+    margin: 0;
+    font-family: Inter, monospace;
+    min-width: 320px;
+    background-color: aqua;
+
+    &.has-active-modal {
+        overflow: hidden;
+    }
+}
+
+.burger {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 60px;
+    padding: 16px 18px;
+    border-left: 1px solid rgba(255, 255, 255, 0.15);
+
+    @include mixins.breakpoint("large") {
+        display: none;
+    }
+
+    span {
+        display: block;
+        height: 2px;
+        background-color: #fff;
+    }
+}
+
+.main-nav {
+    top: calc(100% + 1px);
+    left: 0;
+    width: 100%;
+    display: none;
+
+    &.active {
+        display: block;
+    }
+
+    @include mixins.breakpoint("large") {
+        display: flex;
+        position: static;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+}
+
+.nav-list {
+    flex-direction: column;
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+
+    @include mixins.breakpoint("large") {
+        padding: 0;
+        flex-direction: row;
+    }
+
+    a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 13px;
+        padding: 14px 0;
+        transition: color 0.3s ease;
+        display: inline-block;
+    }
+
+}
+
+.header-buttons {
+    display: none;
+
+    &.active {
+        display: block;
+        height: 100vh;
+    }
+
+    @include mixins.breakpoint("medium") {
+        display: block;
+    }
+}

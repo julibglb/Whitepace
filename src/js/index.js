@@ -1,0 +1,47 @@
+import $ from 'jquery';
+import Swiper from 'swiper';
+import 'swiper/css';
+import '../styles/style.scss';
+
+const $body = $('body');
+const $burger = $('.burger');
+const $nav = $('.main-nav');
+const $headerButtons = $('.header-buttons');
+
+
+function toggleMenu() {
+    $nav.toggleClass('active');
+    $body.toggleClass('has-active-modal');
+
+    if ($(window).width() <= 1152) {
+        $headerButtons.toggleClass('active');
+    }
+}
+
+//Очищає всі налаштування бургер меню при відкриті на великих екранах
+function resetMenuOnResize() {
+
+    const windowWidth = $(window).width();
+
+    if (windowWidth >= 1440) {
+        $burger.removeClass('active');
+        $nav.removeClass('active');
+        $headerButtons.removeClass('active');
+        $body.removeClass('has-active-modal');
+    } else if (windowWidth <= 1152) {
+        // Якщо меню відкрите — показати header-buttons в бургері
+        if ($nav.hasClass('active')) {
+            $headerButtons.addClass('active');
+        } else {
+            $headerButtons.removeClass('active');
+        }
+    } else {
+        // Проміжна ширина — завжди приховуємо header-buttons
+        $headerButtons.removeClass('active');
+    }
+
+}
+
+$burger.on('click', toggleMenu);
+
+$(window).on('resize', resetMenuOnResize);
