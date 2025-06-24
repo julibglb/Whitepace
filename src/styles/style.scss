@@ -1,6 +1,6 @@
 @use "helpers/mixins";
 @use "helpers/reset";
-@use "helpers/variables";
+@use "helpers/variables" as *;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
@@ -9,29 +9,78 @@ body {
     margin: 0;
     font-family: Inter, monospace;
     min-width: 320px;
-    background-color: aqua;
+    background-color: $mainBlue;
 
     &.has-active-modal {
         overflow: hidden;
     }
 }
 
+.container {
+    padding: 16px;
+    position: relative;
+
+    @include mixins.breakpoint("small") {
+        padding: 16px 32px;
+    }
+
+    @include mixins.breakpoint("medium") {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+
+
+.header-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    img {
+        width: 26px;
+        height: auto;
+
+        @include mixins.breakpoint("medium") {
+            width: 37px;
+        }
+    }
+
+    span {
+        font-size: 20px;
+        font-weight: bold;
+        color: $white;
+
+        @include mixins.breakpoint("medium") {
+            font-size: 28px;
+        }
+    }
+}
+
 .burger {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    width: 60px;
+    gap: 10px;
+    width: 42px;
     padding: 16px 18px;
-    border-left: 1px solid rgba(255, 255, 255, 0.15);
+    position: absolute;
+    right: 16px;
+    top: 0;
 
-    @include mixins.breakpoint("large") {
+    @include mixins.breakpoint("medium") {
+        top: auto;
+    }
+
+    @include mixins.breakpoint("xlarge") {
         display: none;
     }
 
     span {
         display: block;
         height: 2px;
-        background-color: #fff;
+        background-color: $white;
     }
 }
 
@@ -43,49 +92,90 @@ body {
 
     &.active {
         display: block;
+
+        @include mixins.breakpoint("medium") {
+            position: absolute;
+        }
     }
 
-    @include mixins.breakpoint("large") {
+    @include mixins.breakpoint("xlarge") {
         display: flex;
-        position: static;
-        flex-direction: row-reverse;
-        justify-content: space-between;
+        flex-direction: row;
     }
+
 }
 
 .nav-list {
     flex-direction: column;
     list-style: none;
     display: flex;
+    gap: 20px;
     margin: 0;
     padding: 0;
+    padding-top: 20px;
     align-items: center;
 
-    @include mixins.breakpoint("large") {
-        padding: 0;
+    @include mixins.breakpoint("xlarge") {
+        padding-top: 0;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
     }
 
     a {
-        color: #fff;
+        font-size: 18px;
+        font-weight: 500;
+        color: $white;
         text-decoration: none;
-        font-size: 13px;
-        padding: 14px 0;
-        transition: color 0.3s ease;
-        display: inline-block;
     }
-
 }
 
 .header-buttons {
     display: none;
 
     &.active {
-        display: block;
+        display: flex;
+        width: max-content;
+        align-items: center;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 20px;
+        margin: 0 auto;
         height: 100vh;
+
     }
 
     @include mixins.breakpoint("medium") {
-        display: block;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 24px;
+        margin-right: 78px;
     }
+}
+
+.header-button-login {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 16px 40px;
+    color: $mainBlue;
+    border: none;
+    border-radius: 8px;
+    background-color: $yellow;
+    cursor: pointer;
+}
+
+.header-button-free {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: $white;
+    padding: 16px 24px;
+    border-radius: 8px;
+    border: none;
+    background-color: $mainSkyblue;
+    cursor: pointer;
 }
