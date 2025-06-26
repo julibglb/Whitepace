@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "sass:meta";
-@use "variables";
+@use "_variables" as *;
 
 //
 // Screen sizes function
@@ -8,8 +8,8 @@
 
 @function screenSize($key) {
 
-    @if map.has-key(variables.$screenSizeMap, $key) {
-        @return map.get(variables.$screenSizeMap, $key);
+    @if map.has-key($screenSizeMap, $key) {
+        @return map.get($screenSizeMap, $key);
     }
 
     @warn "Unknown #{$key} in $screenSizeMap.";
@@ -45,4 +45,20 @@
         color: $color;
         fill: $color;
     }
+}
+
+
+@mixin blueButton {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: normal;
+    color: $white;
+    padding: 20px 40px;
+    border-radius: 8px;
+    border: none;
+    background-color: $mainSkyblue;
+    cursor: pointer;
 }

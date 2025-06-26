@@ -2,21 +2,151 @@
 @use "helpers/reset";
 @use "helpers/variables" as *;
 
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 
 body {
     margin: 0;
     font-family: Inter, monospace;
-    min-width: 320px;
-    background-color: $mainBlue;
 
     &.has-active-modal {
         overflow: hidden;
     }
 }
 
+.general-bg-blue {
+    background-color: $mainBlue;
+
+    &>img {
+        width: 60%;
+        height: 500px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: .2;
+    }
+}
+
 .container {
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1480px;
+    padding: 80px 16px;
+    position: relative;
+
+    @include mixins.breakpoint("small") {
+        padding: 140px 20px 100px;
+    }
+
+    @include mixins.breakpoint("medium") {
+        padding: 140px 32px;
+    }
+
+    @include mixins.breakpoint("xxxlarge") {
+        padding: 140px 220px;
+    }
+}
+
+.card-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mixins.breakpoint("medium") {
+        flex-direction: row;
+    }
+}
+
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mixins.breakpoint("medium") {
+        align-items: flex-start;
+        width: 45%;
+    }
+
+    h3 {
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -0.72px;
+        text-align: center;
+        color: $white;
+        margin-bottom: 24px;
+
+        @include mixins.breakpoint("small") {
+            font-size: 54px;
+            letter-spacing: -1.08px;
+        }
+
+        @include mixins.breakpoint("medium") {
+            font-size: 64px;
+            letter-spacing: -1.28px;
+            text-align: start;
+        }
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 1.67;
+        letter-spacing: -0.36px;
+        text-align: center;
+        color: $white;
+        margin-bottom: 60px;
+
+        @include mixins.breakpoint("small") {
+            font-size: 18px;
+        }
+
+        @include mixins.breakpoint("medium") {
+            text-align: start;
+        }
+    }
+
+    button {
+        @include mixins.blueButton;
+        margin-bottom: 100px;
+
+        @include mixins.breakpoint("medium") {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.card-img {
+    margin: 0 auto;
+    width: 286px;
+
+    @include mixins.breakpoint("small") {
+        width: 551px;
+    }
+
+    @include mixins.breakpoint("medium") {
+        width: 526px;
+    }
+
+    @include mixins.breakpoint("xlarge") {
+        width: 685px;
+    }
+
+    @include mixins.breakpoint("xxxlarge") {
+        width: 824px;
+    }
+
+    img {
+        width: 100%;
+    }
+}
+
+//---------------------Header---------------------------//
+
+.container-header {
+    margin: 0 auto;
+    min-width: 320px;
+    max-width: 1480px;
     padding: 16px;
     position: relative;
 
@@ -29,6 +159,10 @@ body {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+    }
+
+    @include mixins.breakpoint("xxxlarge") {
+        padding: 16px 220px;
     }
 }
 
@@ -64,13 +198,16 @@ body {
     flex-direction: column;
     gap: 10px;
     width: 42px;
-    padding: 16px 18px;
     position: absolute;
     right: 16px;
-    top: 0;
+    top: 16px;
+
+    @include mixins.breakpoint("small") {
+        right: 32px;
+    }
 
     @include mixins.breakpoint("medium") {
-        top: auto;
+        top: 30px;
     }
 
     @include mixins.breakpoint("xlarge") {
@@ -153,6 +290,10 @@ body {
         gap: 24px;
         margin-right: 78px;
     }
+
+    @include mixins.breakpoint("xxxlarge") {
+        margin-right: 0;
+    }
 }
 
 .header-button-login {
@@ -167,15 +308,19 @@ body {
 }
 
 .header-button-free {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 18px;
-    font-weight: 600;
-    color: $white;
+    @include mixins.blueButton;
     padding: 16px 24px;
-    border-radius: 8px;
-    border: none;
-    background-color: $mainSkyblue;
-    cursor: pointer;
+    font-weight: bold;
+}
+
+//-------------------------Project Management---------------------------//
+
+.project-management-info {
+    h3 {
+        color: $black;
+    }
+
+    p {
+        color: $black;
+    }
 }
