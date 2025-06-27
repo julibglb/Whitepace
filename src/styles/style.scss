@@ -6,7 +6,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 
+* {
+    box-sizing: border-box;
+}
+
 body {
+    min-width: 320px;
     margin: 0;
     font-family: Inter, monospace;
 
@@ -19,18 +24,21 @@ body {
     background-color: $mainBlue;
 
     &>img {
-        width: 60%;
-        height: 500px;
+        width: 100%;
+        height: 310px;
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
         opacity: .2;
+
+        @include mixins.breakpoint("xxxlarge") {
+            height: 500px;
+        }
     }
 }
 
 .container {
     margin: 0 auto;
-    min-width: 320px;
     max-width: 1480px;
     padding: 80px 16px;
     position: relative;
@@ -145,7 +153,6 @@ body {
 
 .container-header {
     margin: 0 auto;
-    min-width: 320px;
     max-width: 1480px;
     padding: 16px;
     position: relative;
@@ -305,6 +312,11 @@ body {
     border-radius: 8px;
     background-color: $yellow;
     cursor: pointer;
+    transition: background-color 0.3s ease-out;
+
+    &:hover {
+        background-color: $lightBlue;
+    }
 }
 
 .header-button-free {
@@ -313,14 +325,141 @@ body {
     font-weight: bold;
 }
 
-//-------------------------Project Management---------------------------//
+//-------------------------Project Management and Work Together---------------------------//
 
-.project-management-info {
+.project-management-info,
+.work-together-info {
     h3 {
         color: $black;
     }
 
     p {
+        color: $black;
+    }
+}
+
+.work-together-section {
+    @include mixins.breakpoint("medium") {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
+}
+
+.work-together-img {
+    @include mixins.breakpoint("medium") {
+        margin: 0;
+    }
+
+    @include mixins.breakpoint("xxxlarge") {
+        width: 710px;
+    }
+}
+
+//-------------------------------------Cost Unit---------------------------//
+
+.cost-unit-info {
+    h3 {
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -0.72px;
+        text-align: center;
+        color: $black;
+        margin-bottom: 24px;
+    }
+
+    &>p {
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 1.47;
+        letter-spacing: -0.26px;
+        text-align: center;
+        color: #212529;
+    }
+}
+
+.swiper {
+    width: 100%;
+}
+
+.cost-cards {
+    padding: 60px 0;
+}
+
+.cost-card {
+    width: 280px;
+    height: 642px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    border: 1px solid $yellow;
+    border-radius: 10px;
+
+    @include mixins.breakpoint("small") {
+        width: 472px;
+    }
+
+    &:hover {
+        background-color: $mainBlue;
+    }
+
+    &:hover .check-icon {
+        content: url("../assets/images/check-circle-yellow.png");
+    }
+
+    h4 {
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 1.5;
+        color: $black;
+    }
+
+    button {
+        width: max-content;
+        font-family: Inter;
+        font-size: 16px;
+        font-weight: 500;
+        color: $black;
+        background-color: $white;
+        border-radius: 8px;
+        border: solid 1px #ffe492;
+        padding: 16px 40px;
+        margin-bottom: 0;
+        margin-top: auto;
+    }
+}
+
+.cost-card-price {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -0.72px;
+    color: $black;
+}
+
+.cost-card-description {
+    font-size: 16px;
+    font-weight: normal;
+    line-height: 1.25;
+    letter-spacing: -0.32px;
+}
+
+.cost-card-items {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.cost-card-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 19px;
+
+    span {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.25;
+        letter-spacing: -0.32px;
         color: $black;
     }
 }

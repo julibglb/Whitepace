@@ -1,12 +1,36 @@
 import $ from 'jquery';
-import Swiper from 'swiper';
-import 'swiper/css';
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
 import '../styles/style.scss';
 
 const $body = $('body');
 const $burger = $('.burger');
 const $nav = $('.main-nav');
 const $headerButtons = $('.header-buttons');
+
+
+const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    slidesPerView: 1,
+    spaceBetween: 32,
+    breakpoints: {
+        769: {
+            slidesPerView: "auto",
+            spaceBetween: 32,
+            centeredSlides: true,
+            enabled: true,
+        },
+        1152: {
+            slidesPerView: 3,
+            centeredSlides: false,
+            enabled: false,
+        },
+    },
+    pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+    },
+});
 
 
 function toggleMenu() {
@@ -41,6 +65,7 @@ function resetMenuOnResize() {
     }
 
 }
+
 
 $burger.on('click', toggleMenu);
 
