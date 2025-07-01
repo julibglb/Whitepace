@@ -18,11 +18,13 @@ const swiper = new Swiper('.swiper', {
             slidesPerView: "auto",
             spaceBetween: 32,
             centeredSlides: true,
+            centeredSlidesBounds: true,
             enabled: true,
         },
         1152: {
             slidesPerView: 3,
             centeredSlides: false,
+            centeredSlidesBounds: false,
             enabled: false,
         },
     },

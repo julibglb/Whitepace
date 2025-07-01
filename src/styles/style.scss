@@ -52,7 +52,7 @@ body {
     }
 
     @include mixins.breakpoint("xxxlarge") {
-        padding: 140px 220px;
+        padding: 140px 0;
     }
 }
 
@@ -169,7 +169,7 @@ body {
     }
 
     @include mixins.breakpoint("xxxlarge") {
-        padding: 16px 220px;
+        padding: 16px 0;
     }
 }
 
@@ -328,7 +328,8 @@ body {
 //-------------------------Project Management and Work Together---------------------------//
 
 .project-management-info,
-.work-together-info {
+.work-together-info,
+.your-work-info {
     h3 {
         color: $black;
     }
@@ -373,7 +374,7 @@ body {
         line-height: 1.47;
         letter-spacing: -0.26px;
         text-align: center;
-        color: #212529;
+        color: $black;
     }
 }
 
@@ -394,13 +395,39 @@ body {
     gap: 25px;
     border: 1px solid $yellow;
     border-radius: 10px;
+    transition: all 0.3s ease-out;
 
     @include mixins.breakpoint("small") {
         width: 472px;
+        padding: 40px 44px;
     }
+
 
     &:hover {
         background-color: $mainBlue;
+        border: 1px solid $mainBlue;
+
+        h4 {
+            color: $white;
+        }
+
+        p {
+            color: $white;
+        }
+
+        span {
+            color: $white;
+        }
+
+
+        button {
+            @include mixins.blueButton;
+            padding: 16px 40px;
+        }
+
+        .cost-card-price {
+            color: $yellow;
+        }
     }
 
     &:hover .check-icon {
@@ -441,6 +468,7 @@ body {
     font-weight: normal;
     line-height: 1.25;
     letter-spacing: -0.32px;
+    color: $black;
 }
 
 .cost-card-items {
@@ -461,5 +489,214 @@ body {
         line-height: 1.25;
         letter-spacing: -0.32px;
         color: $black;
+    }
+}
+
+//-------------------------Your Work------------------------------//
+
+.bg-img-work {
+    max-width: 406px;
+    position: absolute;
+
+    img {
+        margin-left: 0;
+        margin-right: auto;
+        transform: none;
+        left: 0;
+        width: 100%;
+    }
+}
+
+.your-work-info {
+    @include mixins.breakpoint("medium") {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        p,
+        h3 {
+            text-align: center;
+        }
+    }
+}
+
+.yellow-line {
+    position: absolute;
+    z-index: -1;
+    top: 90px;
+
+    @include mixins.breakpoint("small") {
+        top: 150px;
+    }
+}
+
+//----------------------Our Sponops --------------------------------//
+
+.our-sponsors-title {
+    font-size: 36px;
+    font-weight: bold;
+    letter-spacing: -0.72px;
+    text-align: center;
+    color: $black;
+
+    @include mixins.breakpoint("small") {
+        font-size: 54px;
+    }
+}
+
+.our-sponsors-images {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 85px;
+
+    @include mixins.breakpoint("medium") {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 75px;
+    }
+
+    img {
+        width: max-content;
+        max-height: 60px;
+
+        @include mixins.breakpoint("small") {
+            max-height: 71px;
+        }
+    }
+}
+
+//---------------------------------feedback-block-------------------------//
+.responses-info {
+    h3 {
+        font-size: 36px;
+        font-weight: bold;
+        letter-spacing: -0.72px;
+        text-align: center;
+        color: $black;
+        margin-bottom: 24px;
+
+        @include mixins.breakpoint("medium") {
+            font-size: 78px;
+        }
+    }
+}
+
+.feedback-blocks {
+    padding: 60px 0;
+}
+
+.feedback-block {
+    width: 288px;
+    height: 458px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 15px 10px 50px 0 rgba(0, 0, 0, 0.1);
+    background-color: $white;
+    transition: all 0.3s ease-out;
+
+    @include mixins.breakpoint("small") {
+        width: 472px;
+        padding: 40px 44px;
+    }
+
+
+    &:hover {
+        background-color: $mainSkyblue;
+
+        .client-response {
+            border-bottom: 1px solid $white;
+        }
+
+        p {
+            color: $white;
+        }
+
+        span {
+            color: $white;
+        }
+
+
+        .check-pud {
+            content: url("../assets/images/quote-white.png");
+            width: 60px;
+            height: 40px;
+        }
+    }
+}
+
+.client-response {
+    border-bottom: 1px solid $black;
+
+    img {
+        width: 60px;
+        height: 40px;
+    }
+
+    p {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 1.25;
+        letter-spacing: -0.32px;
+        color: $black;
+        padding: 32px 0 40px;
+    }
+}
+
+.client-info {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include mixins.breakpoint("small") {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    img {
+        width: 65px;
+
+        @include mixins.breakpoint("small") {
+            width: 95px;
+        }
+    }
+}
+
+.client-name {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    p {
+        font-size: 18px;
+        font-weight: bold;
+        letter-spacing: -0.36px;
+        color: $black;
+
+        @include mixins.breakpoint("small") {
+            font-size: 24px;
+        }
+    }
+
+    span {
+        font-size: 18px;
+        font-weight: normal;
+        line-height: 1.67;
+        letter-spacing: -0.36px;
+        color: $black;
+
+        @include mixins.breakpoint("small") {
+            font-size: 16px;
+            line-height: normal;
+        }
     }
 }
