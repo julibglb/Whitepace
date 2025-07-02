@@ -9,6 +9,7 @@ const $nav = $('.main-nav');
 const $headerButtons = $('.header-buttons');
 
 
+
 const swiper = new Swiper('.swiper', {
     // Optional parameters
     slidesPerView: 1,
